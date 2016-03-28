@@ -1,0 +1,4 @@
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\bin\Debug\CoreDTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\bin\Debug\CoreDTO.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\obj\Debug\CoreDTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\obj\Debug\CoreDTO.pdb

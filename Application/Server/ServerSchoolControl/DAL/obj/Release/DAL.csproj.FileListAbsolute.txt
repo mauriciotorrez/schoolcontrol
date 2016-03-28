@@ -1,0 +1,11 @@
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\DAL.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\DAL.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\Core.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\Core.DTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\Core.DTO.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\Core.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\obj\Release\DAL.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\obj\Release\DAL.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\Utils.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\DAL\bin\Release\Utils.pdb

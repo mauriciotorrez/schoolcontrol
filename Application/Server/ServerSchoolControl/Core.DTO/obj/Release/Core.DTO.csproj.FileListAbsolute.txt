@@ -1,0 +1,4 @@
+D:\schoolControl\Application\Server\ServerSchoolControl\Core.DTO\bin\Release\Core.DTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\Core.DTO\bin\Release\Core.DTO.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\Core.DTO\obj\Release\Core.DTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\Core.DTO\obj\Release\Core.DTO.pdb

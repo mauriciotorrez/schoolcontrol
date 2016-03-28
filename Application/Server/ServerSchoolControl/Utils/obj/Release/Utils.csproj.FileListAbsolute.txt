@@ -1,0 +1,7 @@
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\bin\Release\Utils.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\bin\Release\Utils.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\bin\Release\Core.DTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\bin\Release\Core.DTO.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\obj\Release\Utils.csprojResolveAssemblyReference.cache
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\obj\Release\Utils.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\Utils\obj\Release\Utils.pdb

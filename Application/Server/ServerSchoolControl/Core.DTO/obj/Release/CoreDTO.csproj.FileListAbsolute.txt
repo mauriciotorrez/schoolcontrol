@@ -1,0 +1,4 @@
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\bin\Release\CoreDTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\bin\Release\CoreDTO.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\obj\Release\CoreDTO.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\CoreDTO\obj\Release\CoreDTO.pdb
