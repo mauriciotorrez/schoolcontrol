@@ -10,7 +10,7 @@ namespace Core.DTO
     public class Asistencia
     {
         [DataMember(Name = "GuidAsistencia")]
-        public Guid GuidAsistencia
+        public Guid? GuidAsistencia
         {
             get;
             set;
@@ -31,28 +31,28 @@ namespace Core.DTO
         }
 
         [DataMember(Name = "Falta")]
-        public int Falta
+        public int? Falta
         {
             get;
             set;
         }
 
         [DataMember(Name = "Retrazo")]
-        public int Retrazo
+        public int? Retrazo
         {
             get;
             set;
         }
 
         [DataMember(Name = "Justificacion")]
-        public int Justificacion
+        public int? Justificacion
         {
             get;
             set;
         }
 
         [DataMember(Name = "FechaEnviado")]
-        public DateTime FechaEnviado
+        public DateTime? FechaEnviado
         {
             get;
             set;

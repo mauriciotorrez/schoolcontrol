@@ -113,7 +113,7 @@ namespace ServerSchoolControl.Controllers
             //object value1 = new object();
             //Message value = value1 as Message;
             Message result = null;
-            if (value != null && value is Message && (value as Message).Header != null && (value as Message).Body != null && value.Body.Value != null)
+            if (value != null && value is Message && (value as Message).Header != null && (value as Message).Body != null)
             {
 //ESTUDIANTE-------------------
                 //Estudiante tempEstudiante = new Estudiante
@@ -269,34 +269,34 @@ namespace ServerSchoolControl.Controllers
                 switch (messageType)
                 {
                     case "CreateEstudiante":
-                        result = worker.DoCreateEstudiante(value.Body.Value as Estudiante);
+                        result = worker.DoCreateEstudiante(value);//terminar
                         break;
 
                     case "CreateProfesor":
-                        result = worker.DoCreateProfesor(value.Body.Value as Profesor);
+                        result = worker.DoCreateProfesor(new Profesor());//revisar
                         break;
 
                     case "CreateAdministador":
-                        result = worker.DoCreateAdministrador(value.Body.Value as Administrador);
+                        result = worker.DoCreateAdministrador(new Administrador());//revisar
                         break;
 
                     case "CreateTutor":
-                        result = worker.DoCreateTutor(value.Body.Value as Tutor);
+                        result = worker.DoCreateTutor(new Tutor());//revisar
                         break;
                     case "Login":
-                        result = worker.DoLogin(value.Body.Value as User);
+                        result = worker.DoLogin(value);
                         break;
                     case "CoursesGet":
                         result = worker.DoCoursesGet();
                         break;
                     case "EstudiantesGetByCourseId":
-                        result = worker.DoEstudiantesGetByCourseId(Guid.Parse(value.Body.Value.ToString()));
+                        result = worker.DoEstudiantesGetByCourseId(value);
                         break;
                     case "SaveFault":
-                        result = worker.DoSaveFault(value.Body.Value as Fault);
+                        result = worker.DoSaveFault(value);
                         break;
                     case "SaveAsistencia":
-                        result = worker.DoSaveAsistencia(value.Body.Value as Asistencia);
+                        result = worker.DoSaveAsistencia(value);
                         break;
                     
                     default:

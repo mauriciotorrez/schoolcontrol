@@ -131,6 +131,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KeyValuePairs.cs" />
+    <Compile Include="Controllers\StringObjectPair.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\Workers.cs" />
     <Compile Include="Global.asax.cs">

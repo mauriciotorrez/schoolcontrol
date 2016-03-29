@@ -10,7 +10,7 @@ namespace Core.DTO
     public class Fault
     {
         [DataMember(Name = "GuidFault")]
-        public Guid GuidFault
+        public Guid? GuidFault
         {
             get;
             set;
@@ -23,15 +23,15 @@ namespace Core.DTO
             set;
         }
 
-        [DataMember(Name = "GuidProfesor")]
-        public Guid GuidProfesor
+        [DataMember(Name= "GuidProfesor")]
+        public Guid? GuidProfesor
         {
             get;
             set;
         }
 
         [DataMember(Name = "GuidAdministrador")]
-        public Guid GuidAdministrador
+        public Guid? GuidAdministrador
         {
             get;
             set;
@@ -59,14 +59,7 @@ namespace Core.DTO
         }
 
         [DataMember(Name = "FechaLeido")]
-        public DateTime FechaLeido
-        {
-            get;
-            set;
-        }
-
-        [DataMember(Name = "Apellido_materno")]
-        public string Apellido_materno
+        public DateTime? FechaLeido
         {
             get;
             set;

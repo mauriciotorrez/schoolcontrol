@@ -31,4 +31,3 @@ E:\TEMPORAL\23_03_2016(7.33am)\ServerSchoolControl\Core.DTO\bin\Debug\Core.DTO.p
 E:\TEMPORAL\23_03_2016(7.33am)\ServerSchoolControl\Core.DTO\obj\Debug\Core.DTO.csprojResolveAssemblyReference.cache
 E:\TEMPORAL\23_03_2016(7.33am)\ServerSchoolControl\Core.DTO\obj\Debug\Core.DTO.dll
 E:\TEMPORAL\23_03_2016(7.33am)\ServerSchoolControl\Core.DTO\obj\Debug\Core.DTO.pdb
-D:\schoolControl\Application\Server\ServerSchoolControl\Core.DTO\obj\Debug\Core.DTO.csprojResolveAssemblyReference.cache

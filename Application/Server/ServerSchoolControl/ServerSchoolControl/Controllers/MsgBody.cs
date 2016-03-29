@@ -8,20 +8,8 @@ namespace ServerSchoolControl.Controllers
 {
     //[CollectionDataContract(Namespace = "", Name = "body")]
     [DataContract(Namespace = "", Name = "Body")]
-    public class MsgBody 
+    public class MsgBody : List<KeyValuePairs>
     {
-        [DataMember(Name = "Key")]
-        public string Key
-        {
-            get;
-            set;
-        }
 
-        [DataMember(Name = "Value")]
-        public object Value
-        {
-            get;
-            set;
-        }
     }
 }

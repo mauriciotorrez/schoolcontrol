@@ -32,3 +32,10 @@ D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\
 D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\Core.pdb
 D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\DAL.pdb
 D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\Utils.pdb
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Net.Http.Formatting.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Web.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Web.Http.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Web.Http.WebHost.dll
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Net.Http.Formatting.xml
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Web.Http.xml
+D:\schoolControl\Application\Server\ServerSchoolControl\ServerSchoolControl\bin\System.Web.Http.WebHost.xml
