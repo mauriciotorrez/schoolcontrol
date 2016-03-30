@@ -18,10 +18,10 @@ namespace DAL
             {
                 var parser = new GenericArrayParser() { AsynchParseEnabled = false };
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters.Add("@user", user.Usuario);
-                parameters.Add("@pass", user.Passw);
+                parameters.Add("@usuario", user.Usuario);
+                parameters.Add("@passw", user.Passw);
 
-                SQLDataAccess.Instance.ExecuteReader("UserLogin", parser, parameters);
+                SQLDataAccess.Instance.ExecuteReader("Login", parser, parameters);
                 if (parser.Result.Count > 0)
                 {
                     return (Guid)parser.Result[0][0];
@@ -34,7 +34,7 @@ namespace DAL
             catch (Exception ex)
             {
                 AsyncState errorState = new AsyncState();
-                throw new Exception("DALConstants.ERROR_CREATING_STORE");
+                throw new Exception("DALConstants.ERROR_CREATING_STORE " + ex.Message);
             }
         }
     }

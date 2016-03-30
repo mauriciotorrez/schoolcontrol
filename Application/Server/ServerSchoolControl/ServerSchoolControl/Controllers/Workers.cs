@@ -82,7 +82,7 @@ namespace ServerSchoolControl.Controllers
             {
                 rowResult.Add(new StringObjectPair { Key = "GuidEstudianteException", Value = ex.Message });
             }
-            
+            msgResult.Body.Add(rowResult);
            return msgResult;
         }
 
@@ -112,7 +112,7 @@ namespace ServerSchoolControl.Controllers
                 createdProfesorId = Guid.Empty;
             }
             rowResult.Add(new StringObjectPair { Key = "GuidProfesor", Value = createdProfesorId });
-
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 //ADMINISTRADOR
@@ -132,7 +132,7 @@ namespace ServerSchoolControl.Controllers
                 }
                 else
                 {
-                    throw new Exception("CacahuateException('Invalid Latitude, Longitude')");
+                    throw new Exception("CacahuateException('Invalid Latitude, Longitude'");
                 }
             }
             catch (Exception ex)
@@ -140,7 +140,7 @@ namespace ServerSchoolControl.Controllers
                 createdAdministradorId = Guid.Empty;
             }
             rowResult.Add(new StringObjectPair { Key = "GuidAdministrador", Value = createdAdministradorId });
-
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 //TUTOR
@@ -171,7 +171,7 @@ namespace ServerSchoolControl.Controllers
             {
                 rowResult.Add(new StringObjectPair { Key = "GuidProfesorError", Value = ex.Message });
             }
-            
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 
@@ -181,6 +181,7 @@ namespace ServerSchoolControl.Controllers
         {            
             Message msgResult = new Message();
             KeyValuePairs rowResult = new KeyValuePairs();
+            msgResult.Header.MessageType = "Login";
             Guid userLogedId;
             string username = string.Empty;
             string pass = string.Empty;
@@ -219,7 +220,7 @@ namespace ServerSchoolControl.Controllers
             {
                 rowResult.Add(new StringObjectPair { Key = "GuidUserError", Value = ex.Message });
             }
-            
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 
@@ -227,6 +228,7 @@ namespace ServerSchoolControl.Controllers
         {
             Message msgResult = new Message();
             KeyValuePairs rowResult = new KeyValuePairs();
+            msgResult.Header.MessageType = "CourseGet";
             List<Curso> cursos = new List<Curso>();
             try
             {
@@ -237,7 +239,8 @@ namespace ServerSchoolControl.Controllers
             catch (Exception ex)
             {
                 rowResult.Add(new StringObjectPair { Key = "CoursesGetError", Value = ex.Message });
-            }            
+            }
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 
@@ -245,6 +248,7 @@ namespace ServerSchoolControl.Controllers
         {
             Guid cursoId = Guid.Empty;
             Message msgResult = new Message();
+            msgResult.Header.MessageType = "EstudiantesGetByCourseId";
             KeyValuePairs rowResult = new KeyValuePairs();
             List<Estudiante> estudiantes = new List<Estudiante>();
             try
@@ -273,6 +277,7 @@ namespace ServerSchoolControl.Controllers
             {
                 rowResult.Add(new StringObjectPair { Key = "EstudiantesError", Value = ex.Message });
             }
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 
@@ -282,6 +287,7 @@ namespace ServerSchoolControl.Controllers
         {
             Fault fault;
             Message msgResult = new Message();
+            msgResult.Header.MessageType = "SaveFault";
             KeyValuePairs rowResult = new KeyValuePairs();
             Guid faultId = Guid.Empty;
 
@@ -349,6 +355,7 @@ namespace ServerSchoolControl.Controllers
             {
                 rowResult.Add(new StringObjectPair { Key = "FaultError", Value = ex.Message });
             }
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
 
@@ -356,6 +363,7 @@ namespace ServerSchoolControl.Controllers
         {
             Asistencia asistencia;
             Message msgResult = new Message();
+            msgResult.Header.MessageType = "SaveAsistencia";
             KeyValuePairs rowResult = new KeyValuePairs();
             Guid asistenciatId = Guid.Empty;
 
@@ -417,6 +425,7 @@ namespace ServerSchoolControl.Controllers
             {
                 rowResult.Add(new StringObjectPair { Key = "AsistenciaError", Value = ex.Message });
             }
+            msgResult.Body.Add(rowResult);
             return msgResult;
         }
     }

@@ -36,13 +36,13 @@ namespace DAL
                 else
                 {
                     AsyncState errorState = new AsyncState();
-                    throw new Exception("DALConstants.ERROR_CREATING_STORE");
+                    throw new Exception("DALConstants.ERROR_CREATING_STORE   no data");
                 }
             }
             catch (Exception ex)
             {
                 AsyncState errorState = new AsyncState();
-                throw new Exception("DALConstants.ERROR_CREATING_STORE");
+                throw new Exception("DALConstants.ERROR_CREATING_STORE  " + ex.Message);
             }
         }
     }
