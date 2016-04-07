@@ -12,8 +12,13 @@ namespace DAL
 {
     public class LoginDA
     {
-        public Guid Login(User user)
+        public Dictionary<string, object> Login(User user)
         {
+            Guid personaGuid = Guid.Empty;
+            Guid administradorGuid = Guid.Empty;
+            Guid profesorGuid = Guid.Empty;
+            Guid tutorGuid = Guid.Empty;
+            Dictionary<string, object> res = new Dictionary<string, object>();
             try
             {
                 var parser = new GenericArrayParser() { AsynchParseEnabled = false };
@@ -24,12 +29,40 @@ namespace DAL
                 SQLDataAccess.Instance.ExecuteReader("Login", parser, parameters);
                 if (parser.Result.Count > 0)
                 {
-                    return (Guid)parser.Result[0][0];
+                    personaGuid = (Guid)parser.Result[0][0];
                 }
-                else
+                if (personaGuid != Guid.Empty)
                 {
-                    return Guid.Empty;
+                    parameters.Clear(); 
+                    var parser1 = new GenericArrayParser() { AsynchParseEnabled = false };
+                    parameters.Add("@personaId", personaGuid);
+
+                    SQLDataAccess.Instance.ExecuteReader("AdministradorIdByPersonaId", parser1, parameters);
+                    if (parser1.Result.Count > 0)
+                    {
+                        administradorGuid = (Guid)parser1.Result[0][0];
+                        res.Add("UserType", "Administrador");
+                        res.Add("administradorGuid", administradorGuid);
+                        return res;
+                    }
+                    SQLDataAccess.Instance.ExecuteReader("ProfesorIdByPersonaId", parser1, parameters);
+                    if (parser1.Result.Count > 0)
+                    {
+                        profesorGuid = (Guid)parser1.Result[0][0];
+                        res.Add("UserType", "Profesor");
+                        res.Add("profesorGuid", profesorGuid);
+                        return res;
+                    }
+                    SQLDataAccess.Instance.ExecuteReader("TutorIdByPersonaId", parser1, parameters);
+                    if (parser1.Result.Count > 0)
+                    {
+                        tutorGuid = (Guid)parser1.Result[0][0];
+                        res.Add("UserType", "tutor");
+                        res.Add("tutorGuid", tutorGuid);
+                        return res;
+                    }
                 }
+                return res;
             }
             catch (Exception ex)
             {

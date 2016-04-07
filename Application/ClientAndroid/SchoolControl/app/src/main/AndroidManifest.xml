@@ -2,7 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.finalproject.mauritorrez.schoolcontrol" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +30,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ListCoursesActivity">
+
+        </activity>
+
+        <activity android:name=".ListStudentActivity">
+
+        </activity>
+
+        <activity android:name=".FaultFormActivity">
+
+        </activity>
+
+        <activity android:name=".ListHistorialActivity">
+
+        </activity>
+
+        <!--
+        <activity android:name=".DetailsElementActivity"
+            android:parentActivityName=".ListJobsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.finalproject.mauritorrez.findjob.ListJobsActivity" />
+        </activity>
+
+        <activity android:name=".JobPostFormActivity"
+            android:parentActivityName=".ListJobsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.finalproject.mauritorrez.findjob.ListJobsActivity" />
+        </activity>
+        -->
+
     </application>
 
 </manifest>

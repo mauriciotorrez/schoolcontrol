@@ -183,6 +183,7 @@ namespace ServerSchoolControl.Controllers
             KeyValuePairs rowResult = new KeyValuePairs();
             msgResult.Header.MessageType = "Login";
             Guid userLogedId;
+            Dictionary<string, object> res = new Dictionary<string, object>();
             string username = string.Empty;
             string pass = string.Empty;
             try
@@ -213,8 +214,11 @@ namespace ServerSchoolControl.Controllers
                 };
 
                 LoginDA loginDA = new LoginDA();
-                userLogedId = loginDA.Login(user);
-                rowResult.Add(new StringObjectPair { Key = "GuidUser", Value = userLogedId });
+                res = loginDA.Login(user);
+                foreach (var item in res)
+                {
+                    rowResult.Add(new StringObjectPair { Key = item.Key, Value = item.Value });
+                }                
             }
             catch (Exception ex)
             {
@@ -424,6 +428,43 @@ namespace ServerSchoolControl.Controllers
             catch (Exception ex)
             {
                 rowResult.Add(new StringObjectPair { Key = "AsistenciaError", Value = ex.Message });
+            }
+            msgResult.Body.Add(rowResult);
+            return msgResult;
+        }
+
+        public Message DoFaultGetByUserID(Message value)
+        {
+            Guid userId = Guid.Empty;
+            Message msgResult = new Message();
+            msgResult.Header.MessageType = "EstudiantesGetByCourseId";
+            KeyValuePairs rowResult = new KeyValuePairs();
+            List<Fault> faults = new List<Fault>();
+            try
+            {
+                foreach (KeyValuePairs valuePair in value.Body)
+                {
+                    foreach (StringObjectPair stringPair in valuePair)
+                    {
+                        if (String.Equals(stringPair.Key, "GuidUser", StringComparison.InvariantCultureIgnoreCase) && stringPair.Value != null)
+                        {
+                            userId = Guid.Parse(stringPair.Value.ToString());
+                        }
+                    }
+                }
+
+                if (userId == Guid.Empty)
+                {
+                    throw new Exception("User Guid empty");
+                }
+
+                FaultDA faultDA = new FaultDA();
+                faults = faultDA.Fault_GetByUserId(userId);
+                rowResult.Add(new StringObjectPair { Key = "Faltas", Value = faults });
+            }
+            catch (Exception ex)
+            {
+                rowResult.Add(new StringObjectPair { Key = "faltas list Error", Value = ex.Message });
             }
             msgResult.Body.Add(rowResult);
             return msgResult;

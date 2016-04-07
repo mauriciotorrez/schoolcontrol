@@ -108,7 +108,7 @@ namespace Core.DTO
         }
 
         [DataMember(Name = "Estado")]
-        public int Estado
+        public int? Estado
         {
             get;
             set;

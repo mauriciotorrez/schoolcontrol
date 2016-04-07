@@ -298,6 +298,9 @@ namespace ServerSchoolControl.Controllers
                     case "SaveAsistencia":
                         result = worker.DoSaveAsistencia(value);
                         break;
+                    case "FaultGet":
+                        result = worker.DoFaultGetByUserID(value);
+                        break;
                     
                     default:
                         break;

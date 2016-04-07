@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="mauricio torrez"
+        android:id="@+id/nombre_completo_student_text_view"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="546456465 -5465464645"
+        android:id="@+id/telefonos_student_text_view"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="torrez@awdew.cpm"
+        android:id="@+id/mails_student_text_view"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="calle asidskdals# 4566"
+        android:id="@+id/direcciones_student_text_view"/>
+
+    <RadioGroup
+        android:id="@+id/radio_tipo_indisciplina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <RadioButton
+            android:id="@+id/radio_indisciplina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_indisciplina"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radio_no_tarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_no_tarea" />
+
+        <RadioButton
+            android:id="@+id/radio_no_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_no_material" />
+
+        <RadioButton
+            android:id="@+id/radio_otros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_otros" />
+
+    </RadioGroup>
+
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_mensaje_multiline"
+        android:padding="10dp"
+        android:lines="5"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:minLines="5"
+        android:gravity="top|left"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_historial"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_width="0dip"
+            android:textSize="12sp"
+            android:text="Historial"
+            android:onClick="onClick_historial"/>
+        <Button
+            android:id="@+id/button_enviar"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_width="0dip"
+            android:textSize="12sp"
+            android:text="Enviar"
+            android:onClick="onClick_enviar"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

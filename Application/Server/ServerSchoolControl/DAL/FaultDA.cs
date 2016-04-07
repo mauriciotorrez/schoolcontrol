@@ -49,5 +49,10 @@ namespace DAL
 
             }
         }
+
+        public List<Fault> Fault_GetByUserId(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
