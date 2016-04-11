@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,7 +40,7 @@ import java.util.UUID;
 /**
  * Created by mauri on 4/4/2016.
  */
-public class FaultFormActivity extends Activity {
+public class FaultFormActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = FaultFormActivity.class.getSimpleName();
 
@@ -115,6 +116,12 @@ deply
     public void onClick_historial(View view) {
         //DoPostcLogin();
         Log.d(LOG_TAG, "historial clic : ");
+        Intent intent = new Intent(getBaseContext(), ListHistorialActivity.class);
+        intent.putExtra(FaultFormActivity.RESULT, resultCourse);
+        intent.putExtra(FaultFormActivity.CURRENT_USER, resultUser);
+        intent.putExtra(FaultFormActivity.CURRENT_STUDENT_result, resultStudent);
+        startActivity(intent);
+
     }
 
     public void onClick_enviar(View view) {
@@ -298,8 +305,10 @@ deply
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                Intent intent = new Intent(getBaseContext(), ListCoursesActivity.class);
-                                //intent.putExtra(ListCoursesActivity.RESULT, currentUser);
+                                Intent intent = new Intent(getBaseContext(), ListHistorialActivity.class);
+                                intent.putExtra(FaultFormActivity.RESULT, resultCourse);
+                                intent.putExtra(FaultFormActivity.CURRENT_USER, resultUser);
+                                intent.putExtra(FaultFormActivity.CURRENT_STUDENT_result, resultStudent);
                                 startActivity(intent);
                             }
                         });
@@ -310,16 +319,13 @@ deply
                 AlertDialog alertDialog = new AlertDialog.Builder(FaultFormActivity.this).create();
                 alertDialog.setTitle("Error");
                 alertDialog.setMessage("Error Fault");
-                /*
+
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                Intent intent = new Intent(getBaseContext(), ListCoursesActivity.class);
-                                intent.putExtra(ListCoursesActivity.RESULT, currentUser);
-                                startActivity(intent);
                             }
-                        });*/
+                        });
                 alertDialog.show();
             }
 

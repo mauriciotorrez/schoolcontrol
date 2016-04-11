@@ -52,10 +52,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
 
         Username = (EditText)findViewById(R.id.username_EditText);
         Password = (EditText)findViewById(R.id.password_EditText);
@@ -63,39 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         CurrentDate = calendar.getTime().toString();
 
 
-
-
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public void onClick_ingresar(View view) {
         DoPostcLogin();
@@ -110,156 +75,11 @@ public class LoginActivity extends AppCompatActivity {
         UserDTO tempUserPost = new UserDTO();
         tempUserPost.setUsername(Username.getText().toString());
         tempUserPost.setPassword(Password.getText().toString());
-        //ArrayList<String> ar = new ArrayList<String>();
-        //ar.add(Contact.getText().toString());
-        //tempJobPost.setContacts(ar);
 
         asyncTask.execute(tempUserPost);
 
     }
 
-/*
-    private UserDTO DoLogin1(UserDTO user)
-    {
-        // The URL To connect:
-        // http://dipandroid-ucb.herokuapp.com/work_posts.json
-        HttpURLConnection urlConnection = null;
-        BufferedReader reader = null;
-            /*
-            Uri buildUri = Uri.parse("http://localhost:8075/").buildUpon()
-                    .appendPath("api/values/Save").build();*/
-    /*
-        Uri buildUri = Uri.parse("http://schoolcontrol.somee.com/api/values/Save");
-        //Uri buildUri = Uri.parse("http://10.0.0.5:8075/api/values/Save");
-        //Uri buildUri = Uri.parse("http://dipandroid-ucb.herokuapp.com/work_posts.json");
-
-        try {
-
-            URL url = new URL(buildUri.toString());
-
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
-            urlConnection.setInstanceFollowRedirects(false);
-            urlConnection.setUseCaches(false);
-            urlConnection.setRequestMethod("POST");
-            urlConnection.addRequestProperty("Content-Type", "application/json");
-            urlConnection.setRequestProperty("Accept-Encoding", "identity");
-
-            urlConnection.connect();
-
-            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
-
-            JSONObject header = new JSONObject();
-            header.put("messageType","Login");
-            header.put("deviceId","Login");
-            header.put("userGuid","08A012D5-3DAB-4D0B-8444-90E77CF87D74");
-            header.put("ClientType","1");
-            JSONObject body = new JSONObject();
-
-            JSONObject User = new JSONObject();
-            //jsonUser.put("Usuario",user[0].getUsername());
-            //jsonUser.put("Passw",user[0].getPassword());
-            User.put("Usuario", user.getUsername());
-            User.put("Passw", user.getPassword());
-/*
-                JSONObject userParam = new JSONObject();
-                userParam.put("User",User);
-                body.put("Key", "User").put("Value", userParam);*/
-
-/*
-            JSONArray array = new JSONArray();
-            JSONArray newArray = new JSONArray();
-            array.put(new JSONObject().put("Key", "Usuario").put("Value", "hugo"));
-            array.put(new JSONObject().put("Key", "Passw").put("Value", "123"));
-            newArray.put(array);
-
-            JSONObject message = new JSONObject();
-            message.put("Header", header);
-            message.put("Body", newArray);
-
-
-            wr.writeBytes(message.toString());
-            wr.flush();
-            wr.close();
-
-
-            int HttpResult = urlConnection.getResponseCode();
-            if(HttpResult==HttpURLConnection.HTTP_OK)
-            {
-
-                InputStream inputStream = urlConnection.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(inputStream));
-                StringBuffer buffer = new StringBuffer();
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line).append("\n");
-                }
-
-                String clientInfoJSON = buffer.toString();
-                Log.d(LOG_TAG, "JSON: " + clientInfoJSON);
-
-                JSONObject messageJson = new JSONObject(clientInfoJSON);
-                JSONObject header1 = messageJson.getJSONObject("Header");
-                JSONArray bodyArray = messageJson.getJSONArray("Body");
-
-                if (messageJson.getString("MessageType") == "Login")
-                {
-                    int length = bodyArray.length();
-
-                    for (int i = 0; i < length; i++) {
-                        JSONObject element = bodyArray.getJSONObject(i);
-                        //int id = element.getInt("id");
-                        String key = element.getString("Key");
-                        String value = element.getString("Value");
-                        //String description = element.getString("description");
-                        if (key == "tutorGuid")
-                        {
-                            //String userGuid = value;
-                            user.setUserGuid(UUID.fromString(value));
-                        }
-                        else if (key == "UserType")
-                        {
-                            //String userType = value;
-                            user.setUserType(value);
-                        }
-                    }
-                }
-
-            }
-            else
-            {
-                Log.d(LOG_TAG, "url connection getresponse messaje : " + urlConnection.getResponseMessage());
-
-            }
-
-
-
-        } catch (IOException e) {
-            Log.d(LOG_TAG, "IO error : " + e.getMessage());
-
-        }
-        catch (JSONException es) {
-            Log.d(LOG_TAG, "JSON error : " + es.getMessage());
-        }
-        catch (Exception ex){
-            Log.d(LOG_TAG, "Exceptio error : " + ex.getMessage());
-        }
-        finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-
-                }
-            }
-        }
-        return user;
-    }
-
-*/
     private class PostLoginAsyncTask extends AsyncTask<UserDTO, Void, Void> {
 
         private UserDTO currentUser = new UserDTO();

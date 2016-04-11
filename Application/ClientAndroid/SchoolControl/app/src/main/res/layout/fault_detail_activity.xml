@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultDetailActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="mauricio torrez"
+        android:id="@+id/nombre_completo_student_text_view_detail"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="546456465 -5465464645"
+        android:id="@+id/telefonos_student_text_view_detail"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="torrez@awdew.cpm"
+        android:id="@+id/mails_student_text_view_detail"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="calle asidskdals# 4566"
+        android:id="@+id/direcciones_student_text_view_detail"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="calle asidskdals# 4566"
+        android:id="@+id/tipo_falta_text_view_detail"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="calle asidskdals# 4566"
+        android:id="@+id/mensaje_text_view_detail"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="calle asidskdals# 4566"
+        android:id="@+id/fecha_enviado_text_view_detail"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="calle asidskdals# 4566"
+        android:id="@+id/curso_text_view_detail"/>
+
+</LinearLayout>

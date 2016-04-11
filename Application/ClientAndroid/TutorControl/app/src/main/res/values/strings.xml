@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TutorControl</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_syncronize">Sincronizar</string>
+    <string name="menu_post_job">Postear Trabajo</string>
+    <string name="username_form">Usuario</string>
+    <string name="password_form">Contrasena</string>
+    <string name="contact_form">Contacto</string>
+    <string name="ingresar_form">Ingresar</string>
+    <string name="radio_indisciplina">Falta de indisciplina</string>
+    <string name="radio_no_tarea">No trajo tarea</string>
+    <string name="radio_no_material">No trajo material</string>
+    <string name="radio_otros">Otras faltas</string>
+</resources>

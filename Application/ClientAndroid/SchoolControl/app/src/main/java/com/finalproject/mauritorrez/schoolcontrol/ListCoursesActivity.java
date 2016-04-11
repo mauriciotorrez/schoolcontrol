@@ -4,6 +4,7 @@ package com.finalproject.mauritorrez.schoolcontrol;
  * Created by mauri on 3/30/2016.
  */
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -27,9 +29,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.finalproject.mauritorrez.schoolcontrol.DTO.CourseDTO;
 import com.finalproject.mauritorrez.schoolcontrol.DTO.UserDTO;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +54,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 
-public class ListCoursesActivity extends Activity {
+public class ListCoursesActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = ListCoursesActivity.class.getSimpleName();
 
@@ -60,17 +66,29 @@ public class ListCoursesActivity extends Activity {
     public static final String CURRENT_USER = "CURRENT_USER";
 
     private Context context;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
+    //@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_list_courses);
-        context=getApplicationContext();
+        context = getApplicationContext();
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
+
+        //setActionBar(toolbar);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //jobPostAdapter = new JobPostAdapter(this, null, 0);
-        listView = (ListView)findViewById(R.id.works_list_view);
+        listView = (ListView) findViewById(R.id.works_list_view);
         //listView.setAdapter(jobPostAdapter);
         //getSupportLoaderManager().initLoader(JOB_POST_LOADER_ID, null, this);
         //Thread.sleep(3000);
@@ -106,62 +124,16 @@ public class ListCoursesActivity extends Activity {
         });
 
 
-
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public CourseDTO getCourseByPoss(long idPoss)
-    {
+    public CourseDTO getCourseByPoss(long idPoss) {
         return new CourseDTO();
     }
 
-/*
-    public CourseDTO populateCourseDTOO(long id)
-    {
-        CourseDTO jobPost = new CourseDTO();
-        String id1 = String.valueOf(id);
-        if (id > 0)
-        {
-            JobPostDbHelper dbHelper = new JobPostDbHelper(ListJobsActivity.this);
-            Cursor cursor =  dbHelper.getReadableDatabase().rawQuery("SELECT * FROM job_posts WHERE _id=?", new String[] {id1});
-            if (cursor != null)
-            {
-                if (cursor.moveToFirst())
-                {
-                    do {
-                        jobPost.setTitle(cursor.getString(cursor.getColumnIndex(JobPost.TITLE_COLUMN)));
-                        jobPost.setDescription(cursor.getString(cursor.getColumnIndex(JobPost.DESCRIPTION_COLUMN)));
-                    }while (cursor.moveToNext());
-                }
-            }
-            else
-            {
-                jobPost.setTitle("");
-                jobPost.setDescription("");
-            }
-            int idx = 0;
-            cursor =  dbHelper.getReadableDatabase().rawQuery("SELECT * FROM contacts WHERE job_post_id=?", new String[] {id1});
-            if (cursor != null)
-            {
-                ArrayList<String> tempArray = new ArrayList<>();
-                if (cursor.moveToFirst())
-                {
 
-
-                    do {
-                        tempArray.add(cursor.getString(cursor.getColumnIndex(Contact.NUMBER_COLUMN)));
-                    }while (cursor.moveToNext());
-                }
-                jobPost.setContacts(tempArray);
-            }
-            else
-            {
-                ArrayList<String> tempArray = new ArrayList<>();
-                jobPost.setContacts(tempArray);
-            }
-        }
-        return jobPost;
-    }
-*/
 
     public void syncData() {
         GetDataAsyncTask asyncTask = new GetDataAsyncTask();
@@ -172,9 +144,49 @@ public class ListCoursesActivity extends Activity {
     }
 /*
     @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "ListCourses Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.finalproject.mauritorrez.schoolcontrol/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "ListCourses Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.finalproject.mauritorrez.schoolcontrol/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate our menu from the resources by using the menu inflater.
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
 
         return true;
     }
@@ -182,43 +194,17 @@ public class ListCoursesActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
 
-            case R.id.menu_syncronize:
-                // Here we might call LocationManager.requestLocationUpdates()
-                syncData();
-                Log.d(LOG_TAG, "menu_syncronize click: ");
-                return true;
-
-            case R.id.menu_post_job:
-                // Here we would open up our settings activity
-                Log.d(LOG_TAG, "menu_post_job click: ");
-                Intent intent = new Intent(getBaseContext(), JobPostFormActivity.class);
-                startActivity(intent);
-                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-*//*
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new JobPostLoader(this);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        jobPostAdapter.swapCursor(data);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        jobPostAdapter.swapCursor(null);
-    }
-
 */
 
     private class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
-
 
 
         @Override
@@ -239,10 +225,10 @@ public class ListCoursesActivity extends Activity {
                 DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
 
                 JSONObject header = new JSONObject();
-                header.put("messageType","CoursesGet");
-                header.put("deviceId","CoursesGet");
-                header.put("userGuid","08A012D5-3DAB-4D0B-8444-90E77CF87D74");
-                header.put("ClientType","1");
+                header.put("messageType", "CoursesGet");
+                header.put("deviceId", "CoursesGet");
+                header.put("userGuid", "08A012D5-3DAB-4D0B-8444-90E77CF87D74");
+                header.put("ClientType", "1");
                 JSONObject body = new JSONObject();
 
                 JSONArray array = new JSONArray();
@@ -261,8 +247,7 @@ public class ListCoursesActivity extends Activity {
 
 
                 int HttpResult = urlConnection.getResponseCode();
-                if(HttpResult==HttpURLConnection.HTTP_OK)
-                {
+                if (HttpResult == HttpURLConnection.HTTP_OK) {
 
                     InputStream inputStream = urlConnection.getInputStream();
                     reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -281,8 +266,7 @@ public class ListCoursesActivity extends Activity {
                     JSONArray bodyArray = messageJson.getJSONArray("Body");
                     String meesageType = header1.getString("MessageType");
 
-                    if ( meesageType.equalsIgnoreCase("CourseGet"))
-                    {
+                    if (meesageType.equalsIgnoreCase("CourseGet")) {
                         bodyArray = bodyArray.getJSONArray(0);
                         JSONObject elementArray = bodyArray.getJSONObject(0);
                         JSONObject bodyJson = bodyArray.getJSONObject(0);
@@ -311,22 +295,19 @@ public class ListCoursesActivity extends Activity {
                         }
                     }
 
-                }
-                else
-                {
+                } else {
                     Log.d(LOG_TAG, "url connection getresponse messaje : " + urlConnection.getResponseMessage());
 
                 }
                 Log.d(LOG_TAG, "finished courses");
 
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 Log.d(LOG_TAG, " IOException : " + e.getMessage());
             } catch (JSONException e) {
                 Log.d(LOG_TAG, " IOException : " + e.getMessage());
-            } catch(Exception e){
+            } catch (Exception e) {
                 Log.d(LOG_TAG, " IOException : " + e.getMessage());
-            }finally {
+            } finally {
                 if (reader != null) {
                     try {
                         reader.close();

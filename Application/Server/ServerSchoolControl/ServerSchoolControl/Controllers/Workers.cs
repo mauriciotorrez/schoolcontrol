@@ -469,5 +469,42 @@ namespace ServerSchoolControl.Controllers
             msgResult.Body.Add(rowResult);
             return msgResult;
         }
+
+        public Message DoPendingFaults(Message value)
+        {
+            Guid userId = Guid.Empty;
+            Message msgResult = new Message();
+            msgResult.Header.MessageType = "faults";
+            KeyValuePairs rowResult = new KeyValuePairs();
+            List<Fault> faults = new List<Fault>();
+            try
+            {
+                foreach (KeyValuePairs valuePair in value.Body)
+                {
+                    foreach (StringObjectPair stringPair in valuePair)
+                    {
+                        if (String.Equals(stringPair.Key, "EstudianteGuid", StringComparison.InvariantCultureIgnoreCase) && stringPair.Value != null)
+                        {
+                            userId = Guid.Parse(stringPair.Value.ToString());
+                        }
+                    }
+                }
+
+                if (userId == Guid.Empty)
+                {
+                    throw new Exception("User Guid empty");
+                }
+
+                FaultDA faultDA = new FaultDA();
+                faults = faultDA.Fault_GePendingtByUserId(userId);
+                rowResult.Add(new StringObjectPair { Key = "faults", Value = faults });
+            }
+            catch (Exception ex)
+            {
+                rowResult.Add(new StringObjectPair { Key = "faltas list Error", Value = ex.Message });
+            }
+            msgResult.Body.Add(rowResult);
+            return msgResult;
+        }
     }
 }

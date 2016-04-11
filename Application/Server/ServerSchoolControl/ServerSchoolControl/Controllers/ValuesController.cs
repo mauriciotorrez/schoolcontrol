@@ -301,6 +301,9 @@ namespace ServerSchoolControl.Controllers
                     case "FaultGet":
                         result = worker.DoFaultGetByUserID(value);
                         break;
+                    case "PendingFaults":
+                        result = worker.DoPendingFaults(value);
+                        break;
                     
                     default:
                         break;

@@ -48,6 +48,7 @@
     <Compile Include="Parser\CursoParser.cs" />
     <Compile Include="Parser\DTOParser.cs" />
     <Compile Include="Parser\EstudianteParser.cs" />
+    <Compile Include="Parser\FaultParser.cs" />
     <Compile Include="Parser\GenericArrayParser.cs" />
     <Compile Include="UpdateRow.cs" />
     <Compile Include="InsertRow.cs" />

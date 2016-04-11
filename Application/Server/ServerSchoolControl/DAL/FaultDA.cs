@@ -52,7 +52,42 @@ namespace DAL
 
         public List<Fault> Fault_GetByUserId(Guid userId)
         {
-            throw new NotImplementedException();
+            List<Fault> result = new List<Fault>();
+            var parser = new FaultParser() { AsynchParseEnabled = false };
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@user_GUID", userId);
+                SQLDataAccess.Instance.ExecuteReader("Faul_GetByUserId", parser, parameters);
+
+                return parser.Result;
+
+            }
+            catch (Exception ex)
+            {
+                AsyncState errorState = new AsyncState();
+                throw new Exception("DALConstants.ERROR_CREATING_STORE  " + ex.Message);
+            }
+        }
+
+        public List<Fault> Fault_GePendingtByUserId(Guid userId)
+        {
+            List<Fault> result = new List<Fault>();
+            var parser = new FaultParser() { AsynchParseEnabled = false };
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@user_GUID", userId);
+                SQLDataAccess.Instance.ExecuteReader("Faul_GetPendingByUserId", parser, parameters);
+
+                return parser.Result;
+
+            }
+            catch (Exception ex)
+            {
+                AsyncState errorState = new AsyncState();
+                throw new Exception("DALConstants.ERROR_CREATING_STORE  " + ex.Message);
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +35,7 @@ import java.util.UUID;
 /**
  * Created by mauri on 4/3/2016.
  */
-public class ListStudentActivity extends Activity {
+public class ListStudentActivity extends AppCompatActivity {
 
 
     private static final String LOG_TAG = ListStudentActivity.class.getSimpleName();
@@ -59,6 +61,11 @@ public class ListStudentActivity extends Activity {
         //listView.setAdapter(jobPostAdapter);
         //getSupportLoaderManager().initLoader(JOB_POST_LOADER_ID, null, this);
         //Thread.sleep(3000);
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         CourseDTO resultCourse = (CourseDTO)getIntent().getExtras().getSerializable(RESULT);
 

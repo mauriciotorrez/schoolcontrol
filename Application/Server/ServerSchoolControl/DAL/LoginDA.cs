@@ -18,6 +18,7 @@ namespace DAL
             Guid administradorGuid = Guid.Empty;
             Guid profesorGuid = Guid.Empty;
             Guid tutorGuid = Guid.Empty;
+            Guid estudianteGuid = Guid.Empty;
             Dictionary<string, object> res = new Dictionary<string, object>();
             try
             {
@@ -35,6 +36,7 @@ namespace DAL
                 {
                     parameters.Clear(); 
                     var parser1 = new GenericArrayParser() { AsynchParseEnabled = false };
+                    var parser2 = new GenericArrayParser() { AsynchParseEnabled = false };
                     parameters.Add("@personaId", personaGuid);
 
                     SQLDataAccess.Instance.ExecuteReader("AdministradorIdByPersonaId", parser1, parameters);
@@ -59,6 +61,16 @@ namespace DAL
                         tutorGuid = (Guid)parser1.Result[0][0];
                         res.Add("UserType", "tutor");
                         res.Add("tutorGuid", tutorGuid);
+
+                        parameters.Clear();
+                        parameters.Add("@tutorId", tutorGuid);
+                        SQLDataAccess.Instance.ExecuteReader("StudentIdByTutorId", parser2, parameters);
+                        if (parser2.Result.Count > 0)
+                        {
+                            estudianteGuid = (Guid)parser2.Result[0][0];
+                            res.Add("studentGuid", estudianteGuid);
+                        }
+
                         return res;
                     }
                 }

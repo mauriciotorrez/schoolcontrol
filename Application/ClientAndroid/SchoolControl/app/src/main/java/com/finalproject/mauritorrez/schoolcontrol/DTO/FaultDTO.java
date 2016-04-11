@@ -1,12 +1,21 @@
 package com.finalproject.mauritorrez.schoolcontrol.DTO;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 /**
  * Created by mauri on 4/4/2016.
  */
 public class FaultDTO implements Serializable {
+
+    public UUID getGuidFalta() {
+        return guidFalta;
+    }
+    public void setGuidFalta(UUID guidFalta) {
+        this.guidFalta = guidFalta;
+    }
+    private UUID guidFalta;
 
     public UUID getGuidEstudiante() {
         return guidEstudiante;
@@ -57,5 +66,30 @@ public class FaultDTO implements Serializable {
         this.respuesta = respuesta;
     }
     private String respuesta;
+
+
+    public Date getFechaEnviado() {
+        return fechaEnviado;
+    }
+    public void setFechaEnviado(Date fechaEnviado) {
+        this.fechaEnviado = fechaEnviado;
+    }
+    private Date fechaEnviado;
+
+    public Date getFechaLeido() {
+        return fechaLeido;
+    }
+    public void setFechaLeido(Date fechaLeido) {
+        this.fechaLeido = fechaLeido;
+    }
+    private Date fechaLeido;
+
+    public String getTipoFaltaText() {
+        return tipoFaltaText;
+    }
+    public void setTipoFaltaText(String tipoFaltaText) {
+        this.tipoFaltaText = tipoFaltaText;
+    }
+    private String tipoFaltaText;
 
 }

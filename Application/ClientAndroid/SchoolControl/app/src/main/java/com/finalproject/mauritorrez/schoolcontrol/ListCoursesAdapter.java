@@ -39,29 +39,6 @@ public class ListCoursesAdapter extends ArrayAdapter<CourseDTO> {
         //this.values = values;
         //layoutViewId = resource;
     }
-/*
-    public List< CourseDTO > getList( ) {
-        return values ;
-    }
-
-
-    public int getCount()
-    {
-        return values.size();
-    }
-
-    public CourseDTO getItem(int position)
-    {
-        return values.get(position);
-    }
-
-    public long getItemId(int position)
-    {
-        return position;
-    }
-
-*/
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
