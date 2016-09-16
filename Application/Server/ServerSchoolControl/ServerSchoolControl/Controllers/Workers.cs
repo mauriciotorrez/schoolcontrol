@@ -506,5 +506,43 @@ namespace ServerSchoolControl.Controllers
             msgResult.Body.Add(rowResult);
             return msgResult;
         }
+
+        public Message DoFaultRead(Message value)
+        {
+            Guid faultId = Guid.Empty;
+            Message msgResult = new Message();
+            msgResult.Header.MessageType = "faultRead";
+            bool result = false;
+            KeyValuePairs rowResult = new KeyValuePairs();
+            //List<Fault> faults = new List<Fault>();
+            try
+            {
+                foreach (KeyValuePairs valuePair in value.Body)
+                {
+                    foreach (StringObjectPair stringPair in valuePair)
+                    {
+                        if (String.Equals(stringPair.Key, "FaultGuid", StringComparison.InvariantCultureIgnoreCase) && stringPair.Value != null)
+                        {
+                            faultId = Guid.Parse(stringPair.Value.ToString());
+                        }
+                    }
+                }
+
+                if (faultId == Guid.Empty)
+                {
+                    throw new Exception("Fault Guid empty");
+                }
+
+                FaultDA faultDA = new FaultDA();
+                result = faultDA.Fault_MarkAsRead(faultId);
+                rowResult.Add(new StringObjectPair { Key = "faultReaded", Value = result });
+            }
+            catch (Exception ex)
+            {
+                rowResult.Add(new StringObjectPair { Key = "falta mark as read", Value = ex.Message });
+            }
+            msgResult.Body.Add(rowResult);
+            return msgResult;
+        }
     }
 }

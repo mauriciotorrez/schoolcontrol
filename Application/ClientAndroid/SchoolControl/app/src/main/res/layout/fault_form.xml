@@ -3,6 +3,7 @@
 android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:background="#434341"
 xmlns:tools="http://schemas.android.com/tools"
 tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
 
@@ -13,6 +14,7 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
         android:textStyle="bold"
         android:textSize="15dp"
         android:text="mauricio torrez"
+        android:textColor="@android:color/white"
         android:id="@+id/nombre_completo_student_text_view"/>
 
 
@@ -23,6 +25,7 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
         android:textStyle="bold"
         android:textSize="15dp"
         android:text="546456465 -5465464645"
+        android:textColor="@android:color/white"
         android:id="@+id/telefonos_student_text_view"/>
 
     <TextView
@@ -32,6 +35,7 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
         android:textStyle="bold"
         android:textSize="15dp"
         android:text="torrez@awdew.cpm"
+        android:textColor="@android:color/white"
         android:id="@+id/mails_student_text_view"/>
 
     <TextView
@@ -41,6 +45,7 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
         android:textStyle="bold"
         android:textSize="15dp"
         android:text="calle asidskdals# 4566"
+        android:textColor="@android:color/white"
         android:id="@+id/direcciones_student_text_view"/>
 
     <RadioGroup
@@ -55,24 +60,28 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_indisciplina"
+            android:textColor="@android:color/white"
             android:checked="true" />
 
         <RadioButton
             android:id="@+id/radio_no_tarea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="@string/radio_no_tarea" />
 
         <RadioButton
             android:id="@+id/radio_no_material"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="@string/radio_no_material" />
 
         <RadioButton
             android:id="@+id/radio_otros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="@string/radio_otros" />
 
     </RadioGroup>
@@ -89,6 +98,8 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
         android:minLines="5"
         android:gravity="top|left"
         android:scrollbars="vertical"
+        android:background="@android:color/white"
+        android:textColor="#434341"
         android:layout_marginBottom="20dp"/>
 
     <LinearLayout
@@ -103,6 +114,8 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
             android:layout_width="0dip"
             android:textSize="12sp"
             android:text="Historial"
+            android:background="#fc8506"
+            android:textColor="@android:color/white"
             android:onClick="onClick_historial"/>
         <Button
             android:id="@+id/button_enviar"
@@ -111,6 +124,8 @@ tools:context="com.finalproject.mauritorrez.schoolcontrol.FaultFormActivity">
             android:layout_width="0dip"
             android:textSize="12sp"
             android:text="Enviar"
+            android:background="#fc8506"
+            android:textColor="@android:color/white"
             android:onClick="onClick_enviar"/>
 
     </LinearLayout>

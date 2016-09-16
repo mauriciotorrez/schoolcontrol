@@ -304,7 +304,9 @@ namespace ServerSchoolControl.Controllers
                     case "PendingFaults":
                         result = worker.DoPendingFaults(value);
                         break;
-                    
+                    case "FaultRead":
+                        result = worker.DoFaultRead(value);
+                        break;
                     default:
                         break;
                 }

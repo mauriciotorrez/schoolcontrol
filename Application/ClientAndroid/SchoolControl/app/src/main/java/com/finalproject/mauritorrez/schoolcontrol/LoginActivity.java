@@ -225,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
             {
                 AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
                 alertDialog.setTitle("Login");
-                alertDialog.setMessage("The job has posted successfully");
+                alertDialog.setMessage("Login successfully");
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

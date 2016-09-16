@@ -52,7 +52,6 @@
         </activity>
 
         <activity android:name=".NotificationOne"
-        android:label="Details of Notification One"
         android:parentActivityName="com.finalproject.mauritorrez.tutorcontrol.ListHistorialActivity">
         <meta-data
         android:name="android.support.PARENT_ACTIVITY"

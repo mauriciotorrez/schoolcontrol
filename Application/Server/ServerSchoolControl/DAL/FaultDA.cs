@@ -89,5 +89,43 @@ namespace DAL
                 throw new Exception("DALConstants.ERROR_CREATING_STORE  " + ex.Message);
             }
         }
+
+        public bool Fault_MarkAsRead(Guid faultId)
+        {
+            try
+            {
+                var parser = new GenericArrayParser() { AsynchParseEnabled = false };
+                Guid faultUpdated = Guid.Empty;
+                //var parser = new GenericArrayParser() { AsynchParseEnabled = false };
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@faultId", faultId);
+
+                SQLDataAccess.Instance.ExecuteReader("Set_FaultAsReaded", parser, parameters);
+                if (parser.Result.Count > 0)
+                {
+                    faultUpdated = (Guid)parser.Result[0][0];
+                }
+                else
+                {
+                    AsyncState errorState = new AsyncState();
+                    throw new Exception("DALConstants.ERROR_CREATING_STORE no data");
+                }
+                if (faultUpdated == Guid.Empty)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                AsyncState errorState = new AsyncState();
+                throw new Exception("DALConstants.ERROR_CREATING_STORE " + ex.Message);
+
+            }
+        }
     }
 }

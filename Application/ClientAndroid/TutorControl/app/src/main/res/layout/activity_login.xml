@@ -3,15 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#434341"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.finalproject.mauritorrez.tutorcontrol.LoginActivity">
 
     <TextView
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
         android:textStyle="bold"
         android:textSize="15dp"
+        android:background="@android:color/white"
+        android:textColor="#434341"
         android:text="@string/username_form"/>
 
     <EditText
@@ -19,9 +24,15 @@
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
         android:textSize="15dp"
+        android:background="@android:color/white"
+
+        android:textColor="#434341"
         android:id="@+id/username_EditText"/>
 
     <TextView
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:textColor="#434341"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
@@ -34,6 +45,9 @@
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
         android:textSize="15dp"
+        android:background="@android:color/white"
+
+        android:textColor="#434341"
         android:id="@+id/password_EditText"/>
 
 
@@ -44,38 +58,10 @@
         android:textStyle="bold"
         android:textSize="15dp"
         android:text="@string/ingresar_form"
+        android:layout_marginTop="20dp"
+        android:background="#fc8506"
+        android:textColor="@android:color/white"
         android:onClick="onClick_ingresar"/>
-
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="holaaaaa holaaaaaaaaaaaaaaaaaaaaaaaa"
-        />
-
-    <Button
-        android:id="@+id/startalarm"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:onClick="onClick_start"
-        />
-
-    <Button
-        android:id="@+id/cancelalarm"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:onClick="onClick_cancel"
-        />
-
-    <Button
-        android:id="@+id/ne_notification"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="notificaion"
-        android:onClick="onClick_notfication"
-        />
 
 
 </LinearLayout>

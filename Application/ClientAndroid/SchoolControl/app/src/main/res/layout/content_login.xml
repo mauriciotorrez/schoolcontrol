@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#434341"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.finalproject.mauritorrez.schoolcontrol.LoginActivity">
 
@@ -12,6 +13,10 @@
         android:textAlignment="gravity"
         android:textStyle="bold"
         android:textSize="15dp"
+        android:background="@android:color/white"
+        android:textColor="#434341"
+
+        android:layout_marginTop="50dp"
         android:text="@string/username_form"/>
 
     <EditText
@@ -19,6 +24,9 @@
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
         android:textSize="15dp"
+        android:background="@android:color/white"
+
+        android:textColor="#434341"
         android:id="@+id/username_EditText"/>
 
     <TextView
@@ -27,6 +35,9 @@
         android:textAlignment="gravity"
         android:textStyle="bold"
         android:textSize="15dp"
+        android:background="@android:color/white"
+        android:textColor="#434341"
+        android:layout_marginTop="20dp"
         android:text="@string/password_form"/>
 
     <EditText
@@ -34,6 +45,9 @@
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
         android:textSize="15dp"
+        android:background="@android:color/white"
+        android:textColor="#434341"
+
         android:id="@+id/password_EditText"/>
 
 
@@ -43,7 +57,10 @@
         android:textAlignment="gravity"
         android:textStyle="bold"
         android:textSize="15dp"
+        android:layout_marginTop="20dp"
         android:text="@string/ingresar_form"
+        android:background="#fc8506"
+        android:textColor="@android:color/white"
         android:onClick="onClick_ingresar"/>
 
 </LinearLayout>

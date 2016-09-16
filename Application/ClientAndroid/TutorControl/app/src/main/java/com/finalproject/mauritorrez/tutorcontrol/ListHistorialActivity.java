@@ -1,17 +1,25 @@
 package com.finalproject.mauritorrez.tutorcontrol;
 
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.finalproject.mauritorrez.tutorcontrol.DTO.FaultDTO;
 import com.finalproject.mauritorrez.tutorcontrol.DTO.StudentDTO;
@@ -30,6 +38,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -47,13 +56,30 @@ public class ListHistorialActivity extends AppCompatActivity {
     public static final String CURRENT_STUDENT_result = "CURRENT_STUDENT_result";
     public static final String CURRENT_FAULT = "CURRENT_FAULT";
 
+
+    private NotificationManager myNotificationManager;
+
+    private int notificationIdOne = 111;
+
+    private int notificationIdTwo = 112;
+
+    private int numMessagesOne = 0;
+
+    private int numMessagesTwo = 0;
+
     private ListView listViewHistorial;
+    public static int alam = 0;
+
+
 
     //CourseDTO resultCourse;
     UserDTO resultUser;
     StudentDTO resultStudent;
 
-    private Context context;
+    public Context context;
+    ArrayList<FaultDTO> arrayListFault = new ArrayList<FaultDTO>();
+
+    private PendingIntent pendingIntent;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -71,6 +97,15 @@ public class ListHistorialActivity extends AppCompatActivity {
         //resultCourse = (CourseDTO)getIntent().getExtras().getSerializable(RESULT);
         resultUser = (UserDTO)getIntent().getExtras().getSerializable(CURRENT_USER);
         resultStudent = (StudentDTO)getIntent().getExtras().getSerializable(CURRENT_STUDENT_result);
+
+        arrayListFault = (ArrayList<FaultDTO>)getIntent().getExtras().getSerializable("arrayListFault");
+        if (arrayListFault.size()>1) {
+
+            for (int idx = 0; idx < arrayListFault.size(); idx++) {
+                displayNotificationOne(arrayListFault.get(idx));
+            }
+        }
+
 
         listViewHistorial = (ListView)findViewById(R.id.hitorial_list_view);
 
@@ -115,6 +150,42 @@ public class ListHistorialActivity extends AppCompatActivity {
     }
 
 
+    protected void displayNotificationOne(FaultDTO fault) {
+        notificationIdOne++;
+        // Invoking the default notification service
+        NotificationCompat.Builder  mBuilder = new NotificationCompat.Builder(context);
+        mBuilder.setContentTitle("New Message with explicit intent");
+        mBuilder.setContentText(fault.getMensaje());
+        mBuilder.setTicker("Explicit: New Message Received!");
+        mBuilder.setSmallIcon(R.drawable.ic_school_24dp);
+        // Increase notification number every time a new notification arrives
+        mBuilder.setNumber(++numMessagesOne);
+        // Creates an explicit intent for an Activity in your app
+        Intent resultIntent = new Intent(context, NotificationOne.class);
+        // Sets the Activity to start in a new, empty task
+        //resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+        //        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        resultIntent.putExtra("notificationId", notificationIdOne);
+        resultIntent.putExtra("current_fault",fault);
+        resultIntent.putExtra(CURRENT_USER,resultUser);
+        resultIntent.putExtra(CURRENT_STUDENT_result,resultStudent);
+        //This ensures that navigating backward from the Activity leads out of the app to Home page
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+        // Adds the back stack for the Intent
+        stackBuilder.addParentStack(NotificationOne.class);
+        // Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT //can only be used once
+                );
+        // start the activity when the user clicks the notification text
+        mBuilder.setContentIntent(resultPendingIntent);
+        myNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        // pass the Notification object to the system
+        myNotificationManager.notify(notificationIdOne, mBuilder.build());
+    }
+
+
     public void syncData() {
         GetDataAsyncTask asyncTask = new GetDataAsyncTask();
 
@@ -124,9 +195,11 @@ public class ListHistorialActivity extends AppCompatActivity {
 
     private class GetDataAsyncTask extends AsyncTask<StudentDTO, Void, Void> {
 
+        StudentDTO tempStudent = new StudentDTO();
 
         @Override
         protected Void doInBackground(StudentDTO... student) {
+            tempStudent = student[0];
             // The URL To connect:
             // http://dipandroid-ucb.herokuapp.com/work_posts.json
             HttpURLConnection urlConnection = null;
@@ -277,8 +350,37 @@ public class ListHistorialActivity extends AppCompatActivity {
 
             listViewHistorial.invalidateViews();
 
+            if (tempStudent.getGuidEstudiante() != null)
+            {
+                //NotificationAsyncTask asyncNotification = new NotificationAsyncTask();
+
+                //asyncNotification.execute(tempStudent);
+                if (alam == 0)
+                {
+                    alarmService(tempStudent);
+                }
+                alam = 1;
+
+            }
 
         }
     }
+
+
+    private void alarmService(StudentDTO tempStudent)
+    {
+        Intent myIntent = new Intent(ListHistorialActivity.this, MyAlarmService.class);
+        myIntent.putExtra("student_id",tempStudent );
+
+        pendingIntent = PendingIntent.getService(ListHistorialActivity.this, 0, myIntent, 0);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.add(Calendar.SECOND, 10);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 5 * 1000, pendingIntent);
+        Toast.makeText(ListHistorialActivity.this, "Start Alarm", Toast.LENGTH_LONG).show();
+    }
+
 
 }
